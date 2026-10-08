@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>EHGX X VIP MOBILADOR</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: #023502;
+      color: rgb(247, 242, 242);
+    }
+
+    /* =========================
+       HEADER
+    ========================== */
+    .header {
+      width: 100%;
+      padding: 20px 5%;
+      background: #042001;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+
+      border-bottom: 2px solid #000000;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.35);
+    }
+
+    .logo {
+      font-size: 23px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      white-space: nowrap;
+    }
+
+    /* =========================
+       SEARCH
+    ========================== */
+    .search-box {
+      width: 310px;
+      max-width: 100%;
+      position: relative;
+    }
+
+    .search-box input {
+      width: 100%;
+      height: 45px;
+      padding: 0 18px;
+      background: #000000;
+      color: white;
+
+      border: 1.5px solid #bcbcbc;
+      border-radius: 12px;
+      outline: none;
+
+      box-shadow:
+        0 5px 15px rgba(0,0,0,0.35),
+        inset 0 0 5px rgba(243, 4, 4, 0.08);
+
+      transition: 0.3s;
+    }
+
+    .search-box input::placeholder {
+      color: #cfcfcf;
+    }
+
+    .search-box input:focus {
+      border-color: rgb(125, 44, 44, 0.35);
+      box-shadow:
+        0 0 10px rgba(125, 44, 44, 0.35),
+        0 5px 15px rgba(0,0,0,0.35);
+    }
+
+    /* =========================
+       CONTENT
+    ========================== */
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: 45px auto;
+    }
+
+    .title {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .title h1 {
+      font-size: 30px;
+      margin-bottom: 8px;
+    }
+
+    .title p {
+      color: #ffefef;
+    }
+
+    /* =========================
+       MENU GRID
+    ========================== */
+    .app-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    /* =========================
+       CARD
+    ========================== */
+    .app-card {
+      background: #242222;
+      border: 1.5px solid #a8a8a8;
+      border-radius: 18px;
+
+      padding: 25px 20px;
+      text-align: center;
+
+      box-shadow:
+        0 10px 36px rgb(9, 9, 9),
+        inset 0 0 7px rgba(255,255,255,0.07);
+
+      transition: 0.25s;
+    }
+
+    .app-card:hover {
+      transform: translateY(-6px);
+      border-color: white;
+
+      box-shadow:
+        0 15px 18px rgba(5, 150, 75, 0.45),
+        0 0 12px rgba(255,255,255,0.20);
+    }
+
+    .app-icon {
+      width: 75px;
+      height: 75px;
+      margin: 0 auto 15px;
+
+      background: #373636;
+      border-radius: 18px;
+      border: 1px solid #620303;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      font-size: 32px;
+
+      box-shadow: 0 2px 12px rgba(0, 33, 245, 0.35);
+    }
+
+    .app-card h2 {
+      font-size: 19px;
+      margin-bottom: 10px;
+    }
+
+    .app-card p {
+      color: #e7e7e700;
+      font-size: 14px;
+      line-height: 1.5;
+      min-height: 42px;
+    }
+
+    /* =========================
+       BUTTON
+    ========================== */
+    .download-btn {
+      display: inline-block;
+      width: 100%;
+      margin-top: 18px;
+      padding: 12px 15px;
+
+      background: #02ff17;
+      color: white;
+      text-decoration: none;
+
+      border: 1px solid #a8a8a8;
+      border-radius: 10px;
+
+      font-size: 14px;
+      font-weight: bold;
+
+      box-shadow: 0 5px 10px rgba(0,0,0,0.25);
+
+      transition: 0.25s;
+    }
+
+    .download-btn:hover {
+      background: white;
+      color: #151515;
+      transform: scale(1.03);
+    }
+
+    /* =========================
+       NO RESULT
+    ========================== */
+    #noResult {
+      display: none;
+      text-align: center;
+      font-size: 18px;
+      margin-top: 30px;
+      color: white;
+    }
+
+    /* =========================
+       RESPONSIVE HP
+    ========================== */
+    @media (max-width: 10px) {
+      .app-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+
+      .header {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .logo {
+        text-align: center;
+        font-size: 19px;
+      }
+
+      .search-box {
+        width: 100%;
+      }
+
+      .app-list {
+        grid-template-columns: 1fr;
+      }
+
+      .container {
+        width: 92%;
+        margin-top: 30px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+
+    <div class="logo">
+      𝙀𝙃𝙂𝙓 𝙓 𝙑𝙄𝙋 𝙈𝙊𝘽𝙄𝙇𝘼𝘿𝙊𝙍⚡
+    </div>
+
+    <div class="search-box">
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Cari aplikasi......."
+        onkeyup="searchApp()"
+      >
+    </div>
+
+  </header>
+
+
+  <!-- CONTENT -->
+  <main class="container">
+
+    <div class="title">
+      <h1>DWONLOD APLIKASI </h1>
+      <p>TQ YANG SUDAH ORDER</p>
+    </div>
+
+
+    <div class="app-list" id="appList">
+
+            <!-- APP 1 -->
+      <div class="app-card">
+        <div class="app-icon">🚀</div>
+
+        <h2>GGMP X NARUTO</h2>
+
+        <p>
+          Download GGMP versi terbaru.
+        </p>
+
+        <a
+          href="https://www.mediafire.com/file/d7etq0i83xndp3p/GG_3_X_NARUTO.apk/file"
+          target="_blank"
+          class="download-btn"
+        >
+          DOWNLOAD
+        </a>
+      </div>
+      
+            <!-- APP 2-->
+      <div class="app-card">
+        <div class="app-icon">🚀</div>
+
+        <h2>GG Mouse pro2 Premium</h2>
+
+        <p>
+          Download GGMP versi terbaru.
+        </p>
+
+        <a
+          href="https://www.mediafire.com/file/mdf0tpn86mky1ao/GG_Mouse_Pro2_premium.apk/file"
+          target="_blank"
+          class="download-btn"
+        >
+          DOWNLOAD
+        </a>
+      </div>
+      
+      
+            <!-- APP 3 -->
+      <div class="app-card">
+        <div class="app-icon">🚀</div>
+
+        <h2>GGMP V3 Premium</h2>
+
+        <p>
+          Download GGMP versi terbaru.
+        </p>
+
+        <a
+          href="https://www.mediafire.com/file/1r2tucsn1rsp10u/GGMP_3_PREM.apk/file"
+          target="_blank"
+          class="download-btn"
+        >
+          DOWNLOAD
+        </a>
+      </div>
+      
+      
+            <!-- APP 4 -->
+      <div class="app-card">
+        <div class="app-icon">🚀</div>
+
+        <h2>GGMP X GEXA</h2>
+
+        <p>
+          Download GGMP versi terbaru.
+        </p>
+
+        <a
+          href="https://www.mediafire.com/file/u5onx67waus6vud/GGMP_GEXXA.apk/file"
+          target="_blank"
+          class="download-btn"
+        >
+          DOWNLOAD
+        </a>
+      </div>
+
+      
+            <!-- APP 5 -->
+      <div class="app-card">
+        <div class="app-icon">🚀</div>
+
+        <h2>GGMP X RUOK</h2>
+
+        <p>
+          Download GGMP versi terbaru.
+        </p>
+
+        <a
+          href="https://www.mediafire.com/file/pe0rdhyu29oywki/GGMP_RUOK_BY_ATHEL.apk/file"
+          target="_blank"
+          class="download-btn"
+        >
+          DOWNLOAD
+        </a>
+      </div>
+      
+      
+            <!-- APP 6 -->
+      <div class="app-card">
+        <div class="app-icon">🚀</div>
+
+        <h2>GGMP X BLUSTAK 9.5</h2>
+
+        <p>
+          Download GGMP versi terbaru.
+        </p>
+
+        <a
+          href="https://www.mediafire.com/file/fk0kebz0vb17byx/GGMP_X_BLUSTAK_9.5.apk/file"
+          target="_blank"
+          class="download-btn"
+        >
+          DOWNLOAD
+        </a>
+      </div>
+      
+      
+            <!-- APP 7 -->
+      <div class="app-card">
+        <div class="app-icon">🚀</div>
+
+        <h2>GGMP X BLUSTAK 9.7 Super ringan</h2>
+
+        <p>
+          Download GGMP versi terbaru.
+        </p>
+
+        <a
+          href="https://www.mediafire.com/file/abahq53y9s1m5tl/GGMP_X_BLUSTAK_9.7_.apk/file"
+          target="_blank"
+          class="download-btn"
+        >
+          DOWNLOAD
+        </a>
+      </div>
+      
+      
+            <!-- APP 8 -->
+      <div class="app-card">
+        <div class="app-icon">🚀</div>
+
+        <h2>GGMP X BLUSTAK 9.6</h2>
+
+        <p>
+          Download GGMP versi terbaru.
+        </p>
+
+        <a
+          href="https://www.mediafire.com/file/jwivskmv94hi7w0/GGMP_X_BLUSTAK_V9.6.apk/file"
+          target="_blank"
+          class="download-btn"
+        >
+          DOWNLOAD
+        </a>
+      </div>
+      
+      
+            <!-- APP 9 -->
+      <div class="app-card">
+        <div class="app-icon">🚀</div>
+
+        <h2>GGMP X BLUSTAK V9</h2>
+
+        <p>
+          Download GGMP versi terbaru.
+        </p>
+
+        <a
+          href="https://www.mediafire.com/file/0qy96t8a7witv9f/GGMP_X_BLUSTAK_V9.apk/file"
+          target="_blank"
+          class="download-btn"
+        >
+          DOWNLOAD
+        </a>
+      </div>
+      
+      
+            <!-- APP 10 -->
+      <div class="app-card">
+        <div class="app-icon">🚀</div>
+
+        <h2>GGMP X EJANYAWIT</h2>
+
+        <p>
+          Download GGMP versi terbaru.
+        </p>
+
+        <a
+          href="https://www.mediafire.com/file/3w786vo60z0qtvq/GGMP_X_EJANYAWIT.apk/file"
+          target="_blank"
+          class="download-btn"
+        >
+          DOWNLOAD
+        </a>
+      </div>
+      
+      
+            <!-- APP 11 -->
+      <div class="app-card">
+        <div class="app-icon">🚀</div>
+
+        <h2>GGMP X FALDO</h2>
+
+        <p>
+          Download GGMP versi terbaru.
+        </p>
+
+        <a
+          href="https://www.mediafire.com/file/9757b7367c5d9s3/GGMP_X_FALDO.apk/file"
+          target="_blank"
+          class="download-btn"
+        >
+          DOWNLOAD
+        </a>
+      </div>
+      
+      
+            <!-- APP 12 -->
+      <div class="app-card">
+        <div class="app-icon">🚀</div>
+
+        <h2>GGMP X GOJO</h2>
+
+        <p>
+          Download GGMP versi terbaru.
+        </p>
+
+        <a
+          href="https://www.mediafire.com/file/srbz333a0z59a4n/GGMP_X_GOJO.apk/file"
+          target="_blank"
+          class="download-btn"
+        >
+          DOWNLOAD
+        </a>
+      </div>
+      
+      
+            <!-- APP 13 -->
+      <div class="app-card">
+        <div class="app-icon">🚀</div>
+
+        <h2>GGMP X OBITO</h2>
+
+        <p>
+          Download GGMP versi terbaru.
+        </p>
+
+        <a
+          href="https://www.mediafire.com/file/x4mom1h2bjd6ims/GGMP_X_OBITO.apk/file"
+          target="_blank"
+          class="download-btn"
+        >
+          DOWNLOAD
+        </a>
+      </div>
+
+      
+            <!-- APP 14 -->
+      <div class="app-card">
+        <div class="app-icon">🚀</div>
+
+        <h2>GGMP X REAL MADRIT</h2>
+
+        <p>
+          Download GGMP versi terbaru.
+        </p>
+
+        <a
+          href="https://www.mediafire.com/file/pl0dqv2d4fo9axa/GGMP_X_REAL_MADRID.apk/file"
+          target="_blank"
+          class="download-btn"
+        >
+          DOWNLOAD
+        </a>
+      </div>
+      
+      
+            <!-- APP 15 -->
+      <div class="app-card">
+        <div class="app-icon">🚀</div>
+
+        <h2>GGMP X SAITAMA</h2>
+
+        <p>
+          Download GGMP versi terbaru.
+        </p>
+
+        <a
+          href="https://www.mediafire.com/file/9ksq5i7ncqspd9w/GGMP_X_SAITAMA.apk/file"
+          target="_blank"
+          class="download-btn"
+        >
+          DOWNLOAD
+        </a>
+      </div>
+      
+            <!-- APP 16 -->
+      <div class="app-card">
+        <div class="app-icon">🚀</div>
+
+        <h2>GGMP X UPIN IPIN </h2>
+
+        <p>
+          Download GGMP versi terbaru.
+        </p>
+
+        <a
+          href="https://www.mediafire.com/file/ykkcawnnyeyc01u/GGMP_X_UPIN_IPIN.apk/file"
+          target="_blank"
+          class="download-btn"
+        >
+          DOWNLOAD
+        </a>
+      </div>
+      
+      
+            <!-- APP 17 -->
+      <div class="app-card">
+        <div class="app-icon">🚀</div>
+
+        <h2>GGMP X MSI V5 ZYKU</h2>
+
+        <p>
+          Download GGMP versi terbaru.
+        </p>
+
+        <a
+          href="https://www.mediafire.com/file/fo0qi38mjxihpxj/MSI_V5_ZYKU.apk/file"
+          target="_blank"
+          class="download-btn"
+        >
+          DOWNLOAD
+        </a>
+      </div>
+
+
+           <!-- APP 18 -->
+      <div class="app-card">
+        <div class="app-icon">🚀</div>
+
+        <h2>GGMP X MSI V7 ZYKU</h2>
+
+        <p>
+          Download GGMP versi terbaru.
+        </p>
+
+        <a
+          href="https://www.mediafire.com/file/by1b8x8im3cx7cj/MSI_V7_ZYKU_.apk/file"
+          target="_blank"
+          class="download-btn"
+        >
+          DOWNLOAD
+        </a>
+      </div>
+
+
+
+    <p id="noResult">
+      Aplikasi tidak ditemukan.
+    </p>
+
+  </main>
+
+
+  <!-- JAVASCRIPT SEARCH -->
+  <script>
+
+    function searchApp() {
+
+      const input =
+        document.getElementById("searchInput")
+        .value
+        .toLowerCase();
+
+      const cards =
+        document.querySelectorAll(".app-card");
+
+      const noResult =
+        document.getElementById("noResult");
+
+      let ditemukan = false;
+
+      cards.forEach(function(card) {
+
+        const nama =
+          card.querySelector("h2")
+          .innerText
+          .toLowerCase();
+
+        if (nama.includes(input)) {
+
+          card.style.display = "block";
+          ditemukan = true;
+
+        } else {
+
+          card.style.display = "none";
+
+        }
+
+      });
+
+      if (ditemukan) {
+
+        noResult.style.display = "none";
+
+      } else {
+
+        noResult.style.display = "block";
+
+      }
+
+    }
+
+  </script>
+
+</body>
+</html>
